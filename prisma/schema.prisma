@@ -11,10 +11,10 @@ datasource db {
 }
 
 model Note {
-  id        String   @unique
+  id        String    @unique
   message   String
-  createdAt DateTime @default(now())
-  expiresAt DateTime
+  createdAt DateTime  @default(now())
+  expiresAt DateTime?
 
   @@map("notes")
 }

@@ -1,4 +1,5 @@
-const expInMilliSec = {
+const milliseconds = {
+    "never": null,
     "5m": 5 * 60 * 1000,
     "30m": 30 * 60 * 1000,
     "1h": 60 * 60 * 1000,
@@ -9,4 +10,4 @@ const expInMilliSec = {
     "7d": 7 * 24 * 60 * 60 * 1000
   };
 
-export default expInMilliSec;
+export default milliseconds;

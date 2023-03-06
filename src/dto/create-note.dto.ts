@@ -1,11 +1,11 @@
 import { IsIn, IsOptional, MinLength } from "class-validator";
-import expInMilliSec from "@app/utils/expInMilliSec";
+import milliseconds from "@app/utils/milliseconds";
 
 export class CreateNoteDto {
   @MinLength(1)
   message: string;
 
-  @IsIn(Object.keys(expInMilliSec))
+  @IsIn(Object.keys(milliseconds))
   @IsOptional()
   lifetime?: string;
 }

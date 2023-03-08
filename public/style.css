@@ -62,4 +62,13 @@ select {
     background-color: #e16f6f;
 }
 
+#link:hover {
+    cursor: copy;
+    background-color: #e8e87b;
+}
+
+#link:active {
+    opacity: 0.8;
+    background-color: #5669ea;
+}
 

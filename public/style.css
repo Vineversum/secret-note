@@ -1,0 +1,26 @@
+button {
+    color: black;
+    font-weight: 800;
+    font-size: large;
+    font-family: "SansSerif";
+    background-color: lightgreen;
+    height: 30px;
+    border-radius: 10px;
+    border-style: none;
+}
+
+button:hover {
+    background-color: #36d736;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin-top: 10px;
+}
+
+select {
+
+}
+

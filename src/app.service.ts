@@ -16,13 +16,14 @@ export class AppService {
   async createNote(createNoteDto: CreateNoteDto) {
     const id = makeId(12);
     const key = makeId(12);
+    const { message, lifetime } = createNoteDto;
 
-    const {message, lifetime} = createNoteDto;
-    let expiresAt = milliseconds[lifetime] ? new Date(milliseconds[lifetime]) : null;
+    let expiresAt = milliseconds[lifetime] ?
+      new Date(Date.now() + milliseconds[lifetime]) : null;
 
     const cypherMessage = AES.encrypt(message, key).toString();
 
-    const note = await this.prisma.note.create({
+    await this.prisma.note.create({
       data: {
         id,
         message: cypherMessage,
@@ -30,10 +31,10 @@ export class AppService {
       }
     });
 
-    return { note, uri: `${id}${key}` };
+    return { expiresAt, uri: `${id}${key}` };
   }
 
-  async getNote(uri: string) {
+  async findNote(uri: string, show = false) {
     const id = uri.slice(0, 12);
     const key = uri.slice(12, 24);
     const note = await this.prisma.note.findUnique({ where: { id } });
@@ -42,11 +43,25 @@ export class AppService {
 
     const decrypted = note ? AES.decrypt(note.message, key).toString(encodingStrategy) : "";
 
-    if (note && !expired && decrypted) {
+    if (!note || expired || !decrypted) {
+      throw new NotFoundException("Note either never existed, has already been viewed or expired");
+    }
+    if (show) {
       await this.prisma.note.delete({ where: { id } });
-      return { decrypted };
+      return {
+        found: true,
+        decrypted
+      };
     } else {
-      throw new NotFoundException("Note either never existed or has already been viewed");
+      return {
+        found: true
+      };
     }
   }
+
+  async deleteNote(uri: string) {
+     const { found } = await this.findNote(uri, true);
+     return { found };
+  }
+
 }

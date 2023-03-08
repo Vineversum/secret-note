@@ -1,0 +1,11 @@
+<div class="wrapper">
+  {{#if error}}
+    <h2>{{error.status}}</h2>
+    <p class="message">{{error.message}}</p>
+  {{else}}
+    <p class="message">Your note has been destroyed</p>
+  {{/if}}
+  <a href="/">
+    <button class="blue">Create another note</button>
+  </a>
+</div>

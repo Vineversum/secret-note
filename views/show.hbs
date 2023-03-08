@@ -1,0 +1,20 @@
+<div class="wrapper">
+  {{#if error}}
+    <p class="message red">{{error.message}}</p>
+    <a href="/">
+      <button class="blue">Create another note</button>
+    </a>
+  {{else}}
+    {{#if uri}}
+      <p class="message">This note will be destroyed after first view</p>
+      <a href="/{{uri}}?show=true">
+        <button class="red">Show note</button>
+      </a>
+    {{else}}
+      <p class="message">{{decrypted}}</p>
+      <a href="/">
+        <button class="blue">Create another note</button>
+      </a>
+    {{/if}}
+  {{/if}}
+</div>

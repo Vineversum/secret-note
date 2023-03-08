@@ -1,26 +1,65 @@
+* {
+    box-sizing: border-box;
+    font-family: "Helvetica Neue", Helvetica, Verdana, Arial, Sans, sans-serif;
+    background-color: #eeeeee;
+}
+
 button {
-    color: black;
+    color: #f1f6f4;
     font-weight: 800;
     font-size: large;
-    font-family: "SansSerif";
-    background-color: lightgreen;
-    height: 30px;
+    height: 40px;
     border-radius: 10px;
-    border-style: none;
+    border-color: #ccc;
+    width: 100%;
+    margin-top: 5px;
 }
 
-button:hover {
-    background-color: #36d736;
+button[disabled] {
+    background-color: rgba(58, 61, 55, 0.2);
 }
 
-.container {
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    margin-top: 10px;
+textarea {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 5px;
+    max-width: 100%;
+    width: 100%;
+    height: 200px;
+}
+
+label {
+    font-size: large;
+    flex-grow: 1;
+    margin-left: 10px;
 }
 
 select {
-
+    background-color: #e7e7c3;
+    flex-grow: 5;
+    font-size: large;
+    border-radius: 10px;
 }
+
+.wrapper {
+    margin: 50px auto;
+    max-width: 700px;
+}
+.container {
+    display: flex;
+    margin: 10px auto;
+}
+.message {
+    background-color: #eaeaab;
+    border-color: #ccc;
+    padding: 10px;
+}
+
+.blue {
+    background-color: #5669ea;
+}
+.red {
+    background-color: #e16f6f;
+}
+
 

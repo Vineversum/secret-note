@@ -1,0 +1,22 @@
+<div class="wrapper">
+  <form action="/link" method="POST">
+    <textarea name="message" id="message" class="message" placeholder="secret content goes here..."></textarea>
+    <div class="container">
+      <label for="lifetime">Choose expiration time</label>
+      <select name="lifetime" id="lifetime" class="form-select form-select-sm">
+        <option value="never" selected>Never</option>
+        <option value="5m">5 minutes</option>
+        <option value="30m">30 minutes</option>
+        <option value="1h">1 hour</option>
+        <option value="4h">4 hours</option>
+        <option value="12h">12 hours</option>
+        <option value="1d">1 day</option>
+        <option value="3d">3 days</option>
+        <option value="7d">7 days</option>
+      </select>
+    </div>
+    <div>
+      <button type="submit" disabled class="blue">Create secret note</button>
+    </div>
+  </form>
+</div>

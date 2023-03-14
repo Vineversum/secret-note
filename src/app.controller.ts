@@ -2,6 +2,7 @@ import { Body, Controller, Delete, Get, Param, Post, Query, Render, UsePipes, Va
 import { AppService } from "./app.service";
 import { CreateNoteDto } from "@app/dto/create-note.dto";
 import formatDate from "@app/utils/formatDate";
+import * as process from "process";
 
 @Controller()
 export class AppController {
@@ -39,7 +40,7 @@ export class AppController {
   async createNote(@Body() createNoteDto: CreateNoteDto) {
     const { uri, expiresAt } = await this.appService.createNote(createNoteDto);
     return {
-      uri,
+      uri: process.env.DOMAIN + uri,
       expiresAt: expiresAt ? formatDate(expiresAt) : null
     };
   }

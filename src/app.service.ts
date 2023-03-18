@@ -3,6 +3,7 @@ import { PrismaService } from "@app/prisma.service";
 import { CreateNoteDto } from "@app/dto/create-note.dto";
 import makeId from "@app/utils/makeid";
 import milliseconds from "@app/utils/milliseconds";
+import * as process from "process";
 
 const AES = require("crypto-js/aes");
 const encodingStrategy = require("crypto-js").enc.Utf8;
@@ -31,7 +32,7 @@ export class AppService {
       }
     });
 
-    return { expiresAt, uri: `${id}${key}` };
+    return { expiresAt, url: `${process.env.HOME_URL}${id}${key}` };
   }
 
   async findNote(uri: string, show = false) {

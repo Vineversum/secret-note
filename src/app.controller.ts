@@ -38,9 +38,9 @@ export class AppController {
   @Render("link")
   @UsePipes(new ValidationPipe())
   async createNote(@Body() createNoteDto: CreateNoteDto) {
-    const { uri, expiresAt } = await this.appService.createNote(createNoteDto);
+    const { url, expiresAt } = await this.appService.createNote(createNoteDto);
     return {
-      uri: process.env.DOMAIN + uri,
+      url,
       expiresAt: expiresAt ? formatDate(expiresAt) : null
     };
   }

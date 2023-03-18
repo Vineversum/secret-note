@@ -12,9 +12,9 @@ npm install
 ````
 
 Set environment variables in .env file
--HOME_URL=http://yourdomain.com
--PORT=3000
--DATABASE_URL="postgresql://<user>:<password>@<host>:<port>/<name>?schema=public"
+- HOME_URL=http://yourdomain.com
+- PORT=3000
+- DATABASE_URL="postgresql://user:password@host:port/name?schema=public"
 
 Run docker containers
 
